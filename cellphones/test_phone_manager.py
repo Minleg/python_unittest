@@ -27,6 +27,7 @@ class TestPhoneManager(unittest.TestCase):
 
         testAssignmentMgr = PhoneAssignments()
         testAssignmentMgr.add_phone(testPhone1)
+        testAssignmentMgr.add_phone(testPhone2)
 
         with self.assertRaises(PhoneError):
             testAssignmentMgr.add_phone(testPhone2)
@@ -35,19 +36,40 @@ class TestPhoneManager(unittest.TestCase):
     def test_create_and_add_new_employee(self):
         # TODO write this test and then remove the self.fail() statement
         # Add some employees and verify they are present in the PhoneAssignments.employees list
-        self.fail()
+        testEmployee1 = Employee(1, 'Samantha')
+        testEmployee2 = Employee(2, 'Robert')
+        
+        testEmployees = [ testEmployee1, testEmployee2 ]
+        
+        testAssignmentMgr = PhoneAssignments()
+        testAssignmentMgr.add_employee(testEmployee1)
+        testAssignmentMgr.add_employee(testEmployee2)
+        
+        self.assertCountEqual(testEmployees, testAssignmentMgr.employees)
+            
+        # self.fail()
 
 
     def test_create_and_add_employee_with_duplicate_id(self):
         # TODO write this test and then remove the self.fail() statement
         # TODO you'll need to fix the add_employee method in PhoneAssignments to make this test PhoneAssignments
         # This method will be similar to test_create_and_add_phone_with_duplicate_id
-        self.fail()
+        testEmployee1 = Employee(1, 'Samantha')
+        testEmployee2 = Employee(2, 'Robert')
+        
+        testAssignmentMgr = PhoneAssignments()
+        testAssignmentMgr.add_employee(testEmployee1)
+        testAssignmentMgr.add_employee(testEmployee2)
+        
+        with self.assertRaises(PhoneError):
+            testAssignmentMgr.add_employee(testEmployee2)
+        # self.fail()
 
 
     def test_assign_phone_to_employee(self):
         # TODO write this test and remove the self.fail() statement
         # TODO you'll need to fix the assign method in PhoneAssignments
+        
 
         self.fail()
 

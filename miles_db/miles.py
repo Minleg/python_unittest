@@ -40,11 +40,17 @@ def add_miles(vehicle, new_miles):
 
 def main():
     while True:
-        vehicle = input('Enter vehicle name or enter to quit: ')
-        if not vehicle:
-            break
-        miles = float(input(f'Enter new miles for {vehicle}: ')) ## TODO input validation
-
+        try:
+            vehicle = input('Enter vehicle name or enter to quit: ')
+            if not vehicle:
+                break
+            miles = float(input(f'Enter new miles for {vehicle}: ')) ## TODO input validation
+            if miles < 0 or not isinstance(miles, (int, float)):
+                print('Miles value can\'t be negative')
+                continue
+        except ValueError as e:
+            print('Enter a valid number for miles')
+            continue
         add_miles(vehicle, miles)
 
 
